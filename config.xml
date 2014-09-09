@@ -63,16 +63,14 @@
 	<gap:plugin name="org.apache.cordova.file" version="1.0.1" />
 	
     <!-- Define app icon for each platform. -->
-    <icon src="icon.png" />
-    <icon src="res/icon/android/icon-36-ldpi.png"   gap:platform="android"    gap:density="ldpi" />
-    <icon src="res/icon/android/icon-48-mdpi.png"   gap:platform="android"    gap:density="mdpi" />
-    <icon src="res/icon/android/icon-72-hdpi.png"   gap:platform="android"    gap:density="hdpi" />
-    <icon src="res/icon/android/icon-96-xhdpi.png"  gap:platform="android"    gap:density="xhdpi" />
+	<icon src="icon.png" />
+	<icon src="res/icon/windows-phone/icon-48.png"  gap:platform="winphone" />
+	<icon src="res/icon/windows-phone/icon-173.png" gap:platform="winphone"	gap:role="background" />
 	
-	<gap:platform name="android" />
+	<gap:platform name="winphone" />
 
     <!-- Define app splash screen for each platform. -->
-	<gap:splash src="res/screen/android/splash.9.png" />
+	<gap:splash src="res/screen/windows-phone/screen-portrait.jpg" gap:platform="winphone" />
 
     <!--
         Define access to external domains.
