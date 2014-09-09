@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=medium-dpi" />
+	<title>ZEPTOJS Inter Cars sieć warsztatów Q-Service, Perfect Service, Q-Service Premium</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<script type="text/javascript" src="phonegap.js"></script>
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places,geometry&sensor=true"></script>
+	<script type="text/javascript" src="js/markerclusterer_compiled.js"></script>
+	
+	<!--<script type="text/javascript" src="https://getfirebug.com/firebug-lite-debug.js"></script>-->
+	
+</head>
+<body>
+	<!--<div class="loader"></div>-->
+	<header>
+		<a href="#page1" class="logo">
+			<img src="img/logo.png" alt="Inter Cars" />
+		</a>
+		<ul>
+			<li><a href="#page2" data-ajax="false"><img src="img/subicon-1.png" alt="Newsy" /></a></li>
+			<li><a href="#page3" data-ajax="false"><img src="img/subicon-2.png" alt="Lista warsztatów" /></a></li>
+			<li><a href="#page4" data-ajax="false"><img src="img/subicon-3.png" alt="Mapa" /></a></li>
+			<li><a href="#page5" data-ajax="false"><img src="img/subicon-4.png" alt="Wyceń naprawę" /></a></li>
+		</ul>
+	</header>
+	<div id="page1" data-role="page" style="padding-top:109px;">
+		<div class="content">
+			<div class="row">
+				<div class="small-6 columns">
+					<a href="#page2" class="ikona ikona1">Aktualności<br />&nbsp;</a>
+				</div>
+				<div class="small-6 columns">
+					<a href="#page3" class="ikona ikona2">Lista<br />warsztatów</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="small-6 columns">
+					<a href="#page4" class="ikona ikona3">Mapa<br />warsztatów</a>
+				</div>
+				<div class="small-6 columns">
+					<a href="#page5" class="ikona ikona4">Wyceń<br />naprawę</a>
+				</div>
+			</div>
+		</div>
+		<footer>
+			<a onclick="window.open('http://q-servicepremium.pl/','_system','location=no')"><img src="img/qservicepremium-logo.png" alt="Q-Service Premium"></a>
+			<a onclick="window.open('http://www.q-service.com.pl','_system','location=no')" class="blue"><img src="img/qservice-logo.png" alt="Q-Service"></a>
+			<a onclick="window.open('http://www.perfectservice.pl','_system','location=no')"><img src="img/perfectservice-logo.png" alt="Perfect Service"></a>
+		</footer>
+	</div>
+	<div id="page2" data-role="page">
+		<div class="content">
+			<div id="artykuly" class="clearfix"><div class="panel text-center">Włącz internet aby pobrać najnowsze aktualności.<br /><br /><a onclick="locationreload('page2');"><i class="fa fa-refresh"></i> odśwież</a></div></div>
+		</div>
+	</div>
+	<div id="page3" data-role="page">
+		<div class="content">
+			<div id="zawezarka">
+				<input type="search" placeholder="nazwa, miasto lub ulica" id="warsztat_search" onchange="return warsztaty_filter(this.value);" />
+				<div id="order">
+					<select onchange="return warsztaty_order(this.value);">
+						<option value="1" selected="selected">alfabetycznie wg miast</option>
+						<option value="2">najmniejsza odległość</option>
+					</select>
+				</div>
+			</div>
+			<div id="warsztaty"></div>
+		</div>
+	</div>
+	<div id="page4" data-role="page">
+		<div class="content" style="padding:0px">
+			<div class="input-outer"><div><a class="clearAddress">&#x2716;</a><input type="text" id="address" placeholder="Wprowadź adres (autouzupełnianie)" /></div></div>
+			<div id="map_canvas"></div>
+		</div>
+	</div>
+	<div id="page5" data-role="page">
+		<div class="content">
+			<form onsubmit="return false;" id="wycena">
+				<div class="row">
+					<div class="small-12 columns">
+						<label for="formtyp">typ auta</label>
+						<select name="formtyp" id="formtyp">
+							<option value="auto prywatne">auto prywatne</option>
+							<option value="auto firmowe">auto firmowe</option>
+							<option value="flota">flota</option>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns">
+						<label for="vin">numer VIN</label>
+						<input type="text" name="vin" id="vin" placeholder="numer VIN" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns">
+						<label for="marka">marka, model, silnik</label>
+						<input type="text" name="marka" id="marka" placeholder="marka, model, silnik" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns">
+						<label for="rok">rok produkcji</label>
+						<input type="number" name="rok" id="rok" placeholder="rok produkcji" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns">
+						<label for="paliwo">rodzaj paliwa</label>
+						<select name="paliwo" id="paliwo">
+							<option value="benzyna">benzyna</option>
+							<option value="olej napędowy">olej napędowy</option>
+							<option value="LPG">LPG</option>
+							<option value="inne">inne</option>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns">
+						<label for="rejestr">numer rejestracyjny</label>
+						<input type="text" name="rejestr" id="rejestr" placeholder="numer rejestracyjny" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns">
+						<label for="usluga">usługa do wyceny</label>
+						<textarea rows="4" name="usluga" id="usluga"></textarea>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns">
+						<label for="email">E-mail</label>
+						<input type="email" name="email" id="email" placeholder="E-mail" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns">
+						<label for="tel">Numer telefonu</label>
+						<input type="tel" name="tel" id="tel" placeholder="Numer telefonu" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns">
+						<label for="miasto">miasto</label>
+						<input type="text" name="miasto" id="miasto" placeholder="miasto" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns">
+						<input type="button" value="wyślij" class="send button postfix alert happybutton" style="margin-bottom:0px" onclick="return false;" />
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div id="warsztat" data-role="page">
+		<div class="content"></div>
+		<footer>
+			<a href="#" class="footer_phone"><img src="img/phone.png" alt="" /><span class="telnumber"></span></a>
+			<a href="#" class="footer_paper_plane"><img src="img/paper_plane.png" alt="" />nawiguj</a>
+			<a href="#" class="footer_map"><img src="img/map.png" alt="" />pokaż na mapie</a>
+		</footer>
+	</div>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript">
+		app.initialize();
+		var curYear = new Date().getFullYear();
+		$('#rok').val(curYear);
+	</script>
+</body>
+</html>
