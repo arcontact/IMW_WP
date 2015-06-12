@@ -50,7 +50,7 @@ var	warsztaty = [],
 	warsztaty_from_file = false,
 	artykulyUrl = 'http://www.q-service.com.pl/rss/',
 	//artykulyUrl = 'http://www.arcontact.pl/warsztaty_inter_cars/rss.php',
-	warsztatyUrl = 'http://www.arcontact.pl/warsztaty_inter_cars/feed.php',
+	warsztatyUrl = 'http://www.api.arcontact.pl/icw/',
 	form_email = 'mifdetal@intercars.eu',
 	map,
 	startingLatitude = 52.069347,
@@ -107,7 +107,13 @@ var	warsztaty = [],
 		_search = true;
 		renderWarsztaty(true);
 	}
+	function warsztaty_filter_list(value){
+		renderWarsztaty(value);
+	}
 	function warsztaty_order(type){
+		var filter_select = document.getElementById('filter_select');
+		filter_select.selectedIndex = 0;
+	
 		_order = type;
 		var render = true;
 		$("#address2").remove();
@@ -298,7 +304,7 @@ var	warsztaty = [],
 			warsztaty_loaded = false;
 		}
 	}
-	function renderWarsztaty(){
+	function renderWarsztaty(filter){
 		if(!warsztaty_pagination_loaded){
 			$("body").prepend('<div class="text-center pagination_outer warsztaty_pagination_outer"><div class="relative"><div class="warsztaty_pagination pagination"><a href="#" class="first" data-action="first">&laquo;</a><a href="#" class="previous" data-action="previous">&lsaquo;</a><input type="text" readonly="readonly" /><a href="#" class="next" data-action="next">&rsaquo;</a><a href="#" class="last" data-action="last">&raquo;</a></div></div></div>');
 			if(!mapRenderWarsztaty){
@@ -334,6 +340,33 @@ var	warsztaty = [],
 					use_warsztaty = sortByKey(_warsztaty,'odleglosc');
 				}
 			}
+			
+			if(filter) {
+				var wf;
+				
+				switch(filter) {
+					case '1':
+						wf = 'osobowy';
+					break;
+					case '2':
+						wf = 'ciezarowy';
+					break;
+					case '3':
+						wf = 'motocyklowy';
+					break;
+				}
+				
+				var _tmp = {};
+				$.each(use_warsztaty,function(i,item){
+					if(item.filtr == wf) {
+						_tmp[i] = item;
+					}
+				});
+				
+				len = Object.keys(_tmp).length;
+				use_warsztaty = _tmp;
+			}
+			
 			var per_page = 10;
 			var page_count = 0;
 			var page_data = 0;
@@ -365,9 +398,37 @@ var	warsztaty = [],
 	}
 	function renderWarsztat(id){
 		var item = use_warsztaty[id];
+		var logo;
+		
+		switch(item.umowa) {
+			default:
+			case 'Q-Service':
+				logo = 'img/qservice-logo-mini.png';
+			break;
+			
+			case 'Q-Service Truck':
+				logo = 'img/qservicetruck-logo-mini.png';
+			break;
+			
+			case 'Q-Service Moto':
+				logo = 'img/qservicemoto-logo-mini.png';
+			break;
+			
+			case 'Q-Service Premium':
+				logo = 'img/qservicepremium-logo-mini.png';
+			break;
+			
+			case 'Perfect Service':
+				logo = 'img/perfectservice-logo-mini.png';
+			break;
+		}
+		
+		var warsztat_html = logo ? '<img src="' +logo+ '" alt="" /><br />' : '';
+			warsztat_html += '<h2>'+item.konto+'</h2><p>'+item.ulica+'<br />'+item.kod.substr(0,2)+'-'+item.kod.substr(2)+' '+item.miasto+'</p><table><tr><td>otwarte </td><td>'+item.open+'</td></tr><tr><td>w soboty </td><td>'+item.opensob+'</td></tr></table>';
+		
 		$("#warsztat .content").empty();
-		$("#warsztat .content").append('<h2>'+item.konto+'</h2><p>'+item.ulica+'<br />'+item.kod.substr(0,2)+'-'+item.kod.substr(2)+' '+item.miasto+'</p><table><tr><td>otwarte </td><td>'+item.open+'</td></tr><tr><td>w soboty </td><td>'+item.opensob+'</td></tr></table>');
-		if(item.mechanika==1 || item.przeglad==1 || item.wulkanizacja==1 || item.klimatyzacja==1 || item.geometria==1 || item.diagnostyka==1 || item.elektryka==1 || item.spaliny==1 || item.blacharstwo==1 || item.lakiernictwo==1 || item.szyby==1) {
+		$("#warsztat .content").append(warsztat_html);
+		if(item.mechanika==1 || item.przeglad==1 || item.wulkanizacja==1 || item.klimatyzacja==1 || item.geometria==1 || item.diagnostyka==1 || item.elektryka==1 || item.zawieszenie==1 || item.blacharstwo==1 || item.lakiernictwo==1 || item.szyby==1) {
 			var list = document.createElement('ul');
 			list.style.marginTop = "15px";
 			list.style.marginLeft = "0px";
@@ -394,8 +455,8 @@ var	warsztaty = [],
 			if(item.geometria==1){
 				var li=document.createElement('li');li.innerHTML='geometria kół';list.appendChild(li);
 			}
-			if(item.spaliny==1){
-				var li=document.createElement('li');li.innerHTML='układy wydechowe';list.appendChild(li);
+			if(item.zawieszenie==1){
+				var li=document.createElement('li');li.innerHTML='zawieszenie';list.appendChild(li);
 			}
 			if(item.elektryka==1){
 				var li=document.createElement('li');li.innerHTML='elektryka';list.appendChild(li);

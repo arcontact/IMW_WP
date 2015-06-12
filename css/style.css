@@ -18,9 +18,10 @@ header ul li a{display:block;width:100%;padding-top:8px;padding-bottom:8px;backg
 header ul li a:active{background:#cd0d18;background:-moz-linear-gradient(top,#cd0d18 0,#95130f 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#cd0d18),color-stop(100%,#95130f));background:-webkit-linear-gradient(top,#cd0d18 0,#95130f 100%);background:-o-linear-gradient(top,#cd0d18 0,#95130f 100%);background:-ms-linear-gradient(top,#cd0d18 0,#95130f 100%);background:linear-gradient(to bottom,#cd0d18 0,#95130f 100%)}
 header ul li a.active{background:#959595;background:-moz-linear-gradient(top,#959595 0,#b2b2b2 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#959595),color-stop(100%,#b2b2b2));background:-webkit-linear-gradient(top,#959595 0,#b2b2b2 100%);background:-o-linear-gradient(top,#959595 0,#b2b2b2 100%);background:-ms-linear-gradient(top,#959595 0,#b2b2b2 100%);background:linear-gradient(to bottom,#959595 0,#b2b2b2 100%)}
 footer{position:fixed;left:0;right:0;bottom:-81px;z-index:1000;width:100%;-moz-box-shadow:0px -1px 1px #d0d0d0;-webkit-box-shadow:0px -1px 1px #d0d0d0;box-shadow:0px -1px 1px #d0d0d0;background-color:#fff;}
-footer a{float:left;width:25%;padding:8px}
+footer a{float:left;width:20%;padding:8px}
 footer a.blue{background-color:#004489}
 footer a.blue2{background-color:#014289}
+footer a.black{background-color:#000}
 .content{padding:10px;}
 #page1{padding-bottom:81px}
 #page1 .content .ikona1{background-image:url('../img/srodek-1s.png')}
@@ -68,7 +69,7 @@ footer a.blue2{background-color:#014289}
 #warsztat_search{margin-top:0px;margin-bottom:10px}
 .toggleForm{display:block;width:30px;height:30px;position:absolute;top:10px;right:10px;padding:3px;color:#fff!important;font-size:18px;line-height:20px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;background:#e30613;background:-moz-linear-gradient(top,#e30613 0,#ae0f0a 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#e30613),color-stop(100%,#ae0f0a));background:-webkit-linear-gradient(top,#e30613 0,#ae0f0a 100%);background:-o-linear-gradient(top,#e30613 0,#ae0f0a 100%);background:-ms-linear-gradient(top,#e30613 0,#ae0f0a 100%);background:linear-gradient(to bottom,#e30613 0,#ae0f0a 100%)}
 .toggleForm:active{background:#cd0d18;background:-moz-linear-gradient(top,#cd0d18 0,#95130f 100%);background:-webkit-gradient(linear,left top,left bottom,color-stop(0%,#cd0d18),color-stop(100%,#95130f));background:-webkit-linear-gradient(top,#cd0d18 0,#95130f 100%);background:-o-linear-gradient(top,#cd0d18 0,#95130f 100%);background:-ms-linear-gradient(top,#cd0d18 0,#95130f 100%);background:linear-gradient(to bottom,#cd0d18 0,#95130f 100%)}
-#order select,#order input{margin-bottom:10px}
+#order select,#order input,#filter select,#filter input{margin-bottom:10px}
 
 #warsztat .content{padding-bottom:73px}
 #warsztat .content h2{font-size:18px;font-weight:bold;font-family:Lato,sans-serif}

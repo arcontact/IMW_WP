@@ -4,8 +4,8 @@
 	<meta charset="utf-8" />
 	<meta name="format-detection" content="telephone=no" />
 	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=medium-dpi" />
-	<title>ZEPTOJS Inter Cars sieć warsztatów Q-Service, Perfect Service, Q-Service Premium</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<title>Inter Cars sieć warsztatów Q-Service, Perfect Service, Q-Service Premium</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css?v=2015061203" />
 	<script type="text/javascript" src="phonegap.js"></script>
 	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places,geometry&sensor=true"></script>
 	<script type="text/javascript" src="js/markerclusterer_compiled.js"></script>
@@ -49,6 +49,7 @@
 			<a onclick="window.open('http://q-servicepremium.pl/','_system','location=no')"><img src="img/qservicepremium-logo.png" alt="Q-Service Premium"></a>
 			<a onclick="window.open('http://www.q-service.com.pl','_system','location=no')" class="blue"><img src="img/qservice-logo.png" alt="Q-Service"></a>
 			<a onclick="window.open('http://truck.q-service.com.pl/','_system','location=no')" class="blue2"><img src="img/qservicetruck-logo.png" alt="Q-Service Truck"></a>
+			<a onclick="window.open('http://www.qservicemoto.pl/','_system','location=no')" class="black"><img src="img/qservicemoto-logo.png" alt="Q-Service Moto"></a>
 			<a onclick="window.open('http://www.perfectservice.pl','_system','location=no')"><img src="img/perfectservice-logo.png" alt="Perfect Service"></a>
 		</footer>
 	</div>
@@ -65,6 +66,14 @@
 					<select onchange="return warsztaty_order(this.value);">
 						<option value="1" selected="selected">alfabetycznie wg miast</option>
 						<option value="2">najmniejsza odległość</option>
+					</select>
+				</div>
+				<div id="filter">
+					<select onchange="return warsztaty_filter_list(this.value);" id="filter_select">
+						<option value="">wszystkie warsztaty</option>
+						<option value="1">osobowe</option>
+						<option value="2">ciężarowe</option>
+						<option value="3">motocyklowe</option>
 					</select>
 				</div>
 			</div>
@@ -165,7 +174,7 @@
 			<a href="#" class="footer_map"><img src="img/map.png" alt="" />pokaż na mapie</a>
 		</footer>
 	</div>
-	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/index.js?v=2015061203"></script>
 	<script type="text/javascript">
 		app.initialize();
 		var curYear = new Date().getFullYear();
