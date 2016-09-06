@@ -32,7 +32,7 @@ var	warsztaty = [],
 	_warsztaty = [],
 	use_warsztaty = [],
 	_order = 1,
-	_search = false,
+	_word = '',
 	warsztaty_first_load = true,
 	warsztaty_pagination_loaded = false,
 	warsztatyDiv = document.getElementById("warsztaty"),
@@ -102,10 +102,9 @@ var	warsztaty = [],
 			return ((x < y) ? -1 : ((x > y) ? 1 : 0));
 		});
 	};
-	function warsztaty_filter(value){
-		_warsztaty = filterValuePart(warsztaty,value);
-		_search = true;
-		renderWarsztaty(true);
+	function warsztaty_search(val){
+		_word = val;
+		renderWarsztaty();
 	}
 	function warsztaty_filter_list(value){
 		renderWarsztaty(value);
@@ -305,6 +304,7 @@ var	warsztaty = [],
 		}
 	}
 	function renderWarsztaty(filter){
+		_warsztaty = warsztaty;
 		if(!warsztaty_pagination_loaded){
 			$("body").prepend('<div class="text-center pagination_outer warsztaty_pagination_outer"><div class="relative"><div class="warsztaty_pagination pagination"><a href="#" class="first" data-action="first">&laquo;</a><a href="#" class="previous" data-action="previous">&lsaquo;</a><input type="text" readonly="readonly" /><a href="#" class="next" data-action="next">&rsaquo;</a><a href="#" class="last" data-action="last">&raquo;</a></div></div></div>');
 			if(!mapRenderWarsztaty){
@@ -312,10 +312,9 @@ var	warsztaty = [],
 			}
 			warsztaty_pagination_loaded = true;
 		}
-		if(_warsztaty.length <= 0 && !_search){
-			_warsztaty = warsztaty;
-		}
-		if(!_search){
+		if(_word.length > 0){
+			_warsztaty = filterValuePart(_warsztaty,_word);
+		} else {
 			_warsztaty = filterValuePart(_warsztaty,'');
 		}
 		var len = Object.keys(_warsztaty).length;

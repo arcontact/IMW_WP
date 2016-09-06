@@ -5,9 +5,9 @@
 	<meta name="format-detection" content="telephone=no" />
 	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, target-densitydpi=medium-dpi" />
 	<title>Inter Cars sieć warsztatów Q-Service, Perfect Service, Q-Service Premium</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css?v=2015061203" />
+	<link rel="stylesheet" type="text/css" href="css/style.css?v=20160906" />
 	<script type="text/javascript" src="phonegap.js"></script>
-	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places,geometry&sensor=true"></script>
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places,geometry&key=AIzaSyB1AMo_F7sFSCeVaaMD2_pki-B2uYXqSFE"></script>
 	<script type="text/javascript" src="js/markerclusterer_compiled.js"></script>
 	
 	<!--<script type="text/javascript" src="https://getfirebug.com/firebug-lite-debug.js"></script>-->
@@ -61,7 +61,7 @@
 	<div id="page3" data-role="page">
 		<div class="content">
 			<div id="zawezarka">
-				<input type="search" placeholder="nazwa, miasto lub ulica" id="warsztat_search" onchange="return warsztaty_filter(this.value);" />
+				<input type="search" placeholder="nazwa, miasto lub ulica" id="warsztat_search" onchange="return warsztaty_search(this.value);" />
 				<div id="order">
 					<select onchange="return warsztaty_order(this.value);">
 						<option value="1" selected="selected">alfabetycznie wg miast</option>
@@ -174,7 +174,7 @@
 			<a href="#" class="footer_map"><img src="img/map.png" alt="" />pokaż na mapie</a>
 		</footer>
 	</div>
-	<script type="text/javascript" src="js/index.js?v=2015061203"></script>
+	<script type="text/javascript" src="js/index.js?v=20160906"></script>
 	<script type="text/javascript">
 		app.initialize();
 		var curYear = new Date().getFullYear();
