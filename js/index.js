@@ -48,7 +48,7 @@ var	warsztaty = [],
 	fi_path = 'installed.dat',
 	warsztaty_path = 'warsztaty.txt',
 	warsztaty_from_file = false,
-	artykulyUrl = 'http://www.intercars.com.pl/pl/wiedza/wydarzenia/?r=rss',
+	artykulyUrl = 'https://www.autofakty.pl/feed/',
 	//artykulyUrl = 'http://www.arcontact.pl/warsztaty_inter_cars/rss.php',
 	warsztatyUrl = 'http://www.api.arcontact.pl/icw/',
 	form_email = 'mifdetal@intercars.eu',
@@ -877,22 +877,21 @@ var	warsztaty = [],
 		$(".input-outer").hide();
 	}
 	function reloadScripts(){
-			$("header ul li a").removeClass("active");
-			var targetID = $(".ui-page-active").attr('id');
-			$('header ul li a[href="'+targetID+'"]').addClass("active");
-			$("header .logo").on("click",function(){
-				$("header ul li a").removeClass("active");
-			});
-			$(document).on("pagebeforechange",function(e,eventData){
-				$("header ul li a").removeClass("active");
-				targetID = eventData.toPage;
-				$('header ul li a[href="'+targetID+'"]').addClass("active");
-			});
-			$(".loader").animate({"opacity":0},500,"easeOutExpo",function(){this.remove();});
-			$("#page1 footer").animate({"bottom":0},500,"easeOutExpo");
-			$(".clearAddress").on("click",function(){
-				$("#address").val('');
-			});
+		$("header ul.list-2 li a").removeClass("active");
+		var targetID = $(".ui-page-active").attr('id');
+		$('header ul.list-2 li a[href="'+targetID+'"]').addClass("active");
+		$("header .logo").on("click",function(){
+			$("header ul.list-2 li a").removeClass("active");
+		});
+		$(document).on("pagebeforechange",function(e,eventData){
+			$("header ul.list-2 li a").removeClass("active");
+			targetID = eventData.toPage;
+			$('header ul.list-2 li a[href="'+targetID+'"]').addClass("active");
+		});
+		$(".clearAddress").on("click",function(){
+			$("#address").val('');
+		});
+		
 			$('#wycena').isHappy({
 				fields: {
 					'#formtyp': {

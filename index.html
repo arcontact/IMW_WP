@@ -8,19 +8,27 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css?v=20160906" />
 </head>
 <body>
-	<!--<div class="loader"></div>-->
 	<header>
-		<a href="#page1" class="logo">
-			<img src="img/logo.png" alt="Inter Cars" />
-		</a>
-		<ul>
-			<li><a href="#page2" data-ajax="false"><img src="img/subicon-1.png" alt="Newsy" /></a></li>
-			<li><a href="#page3" data-ajax="false"><img src="img/subicon-2.png" alt="Lista warsztatów" /></a></li>
-			<li><a href="#page4" data-ajax="false"><img src="img/subicon-3.png" alt="Mapa" /></a></li>
-			<li><a href="#page5" data-ajax="false"><img src="img/subicon-4.png" alt="Wyceń naprawę" /></a></li>
-		</ul>
+		<ul class="list-1">
+			<li><a onclick="window.open('http://qservicepremium.pl/','_system','location=no')"><img src="img/qservicepremium-logo.png" alt="Q-Service Premium"></a></li><!--
+			--><li><a onclick="window.open('http://www.q-service.com.pl','_system','location=no')" class="blue"><img src="img/qservice-logo.png" alt="Q-Service"></a></li><!--
+			--><li><a onclick="window.open('http://truck.q-service.com.pl/','_system','location=no')" class="blue2"><img src="img/qservicetruck-logo.png" alt="Q-Service Truck"></a></li><!--
+			--><li><a onclick="window.open('http://www.qservicemoto.pl/','_system','location=no')" class="black"><img src="img/qservicemoto-logo.png" alt="Q-Service Moto"></a></li><!--
+			--><li><a onclick="window.open('http://www.perfectservice.pl','_system','location=no')"><img src="img/perfectservice-logo.png" alt="Perfect Service"></a></li><!--
+		--></ul>
+		<p>
+			<a href="#page1" class="logo">
+				Sieć Serwisów Samochodowych
+			</a>
+		</p>
+		<ul class="list-2">
+			<li><a href="#page2" data-ajax="false"><img src="img/subicon-1.png" alt="Newsy" /></a></li><!--
+			--><li><a href="#page3" data-ajax="false"><img src="img/subicon-2.png" alt="Lista warsztatów" /></a></li><!--
+			--><li><a href="#page4" data-ajax="false"><img src="img/subicon-3.png" alt="Mapa" /></a></li><!--
+			--><li><a href="#page5" data-ajax="false"><img src="img/subicon-4.png" alt="Wyceń naprawę" /></a></li><!--
+		--></ul>
 	</header>
-	<div id="page1" data-role="page" style="padding-top:109px;">
+	<div id="page1" data-role="page">
 		<div class="content">
 			<div class="row">
 				<div class="small-6 columns">
@@ -168,10 +176,10 @@
 			<a href="#" class="footer_map"><img src="img/map.png" alt="" />pokaż na mapie</a>
 		</footer>
 	</div>
-	<script type="text/javascript" src="phonegap.js"></script>
+	<script type="text/javascript" src="cordova.js"></script>
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places,geometry&key=AIzaSyB1AMo_F7sFSCeVaaMD2_pki-B2uYXqSFE"></script>
 	<script type="text/javascript" src="js/markerclusterer.js"></script>
-	<script type="text/javascript" src="js/index.js?v=20160906"></script>
+	<script type="text/javascript" src="js/index.js?v=20161128"></script>
 	<script type="text/javascript">
 		app.initialize();
 		var curYear = new Date().getFullYear();
